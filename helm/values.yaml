@@ -28,7 +28,7 @@ podDisruptionBudget:
 # 1. Auth Service (Java 21 / Spring Boot) + Dedicated auth-db
 auth:
   enabled: true
-  tag: auth-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: auth-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8081
@@ -52,7 +52,7 @@ auth:
 # 2. Catalog Service (Go) + Dedicated catalog-db
 catalog:
   enabled: true
-  tag: catalog-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: catalog-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8082
@@ -76,7 +76,7 @@ catalog:
 # 3. Inventory Service (Node.js) + Dedicated inventory-db
 inventory:
   enabled: true
-  tag: inventory-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: inventory-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8083
@@ -100,7 +100,7 @@ inventory:
 # 4. Order Service (Python) + Dedicated order-db
 order:
   enabled: true
-  tag: order-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: order-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8084
@@ -124,7 +124,7 @@ order:
 # 5. Payment Service (C# / .NET) + Dedicated payment-db
 payment:
   enabled: true
-  tag: payment-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: payment-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8085
@@ -148,7 +148,7 @@ payment:
 # 6. Notification Service (Ruby / Sinatra) + Dedicated notification-db
 notification:
   enabled: true
-  tag: notification-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: notification-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8086
@@ -172,7 +172,7 @@ notification:
 # 7. Analytics Service (PHP) + Dedicated analytics-db
 analytics:
   enabled: true
-  tag: analytics-service-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: analytics-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8087
@@ -196,7 +196,7 @@ analytics:
 # 8. Cart Service (Python FastAPI) + Dedicated cart-db
 cart:
   enabled: true
-  tag: cart-service
+  tag: cart-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8088
@@ -220,7 +220,7 @@ cart:
 # 9. Shipping Service (Python FastAPI) + Dedicated shipping-db
 shipping:
   enabled: true
-  tag: shipping-service
+  tag: shipping-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8089
@@ -244,7 +244,7 @@ shipping:
 # 10. Product Reviews Service (Python FastAPI) + Dedicated reviews-db
 reviews:
   enabled: true
-  tag: reviews-service
+  tag: reviews-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8090
@@ -268,7 +268,7 @@ reviews:
 # 11. Promotions Service (Python FastAPI) + Dedicated promotions-db
 promotions:
   enabled: true
-  tag: promotions-service
+  tag: promotions-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8091
@@ -292,7 +292,7 @@ promotions:
 # 12. Product Search Service (Python FastAPI) + Dedicated search-db
 search:
   enabled: true
-  tag: search-service
+  tag: search-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     port: 8092
@@ -316,7 +316,7 @@ search:
 # 13. Frontend Web UI (React + Nginx)
 frontend:
   enabled: true
-  tag: frontend-4f929f3b16de929e2d990fe8637d9b9220edc820
+  tag: frontend-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 2
   service:
     type: ClusterIP
