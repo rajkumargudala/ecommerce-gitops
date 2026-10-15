@@ -294,11 +294,13 @@ search:
   enabled: true
   tag: search-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
   replicaCount: 1
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1a
   service:
     port: 8092
   resources:
     requests:
-      cpu: 100m
+      cpu: 25m
       memory: 128Mi
     limits:
       cpu: 250m

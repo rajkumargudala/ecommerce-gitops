@@ -25,6 +25,10 @@ spec:
       labels:
         app: {{ $svc }}-service
     spec:
+      {{- with $cfg.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: {{ $svc }}-service
           image: "{{ $.Values.global.imageRegistry }}/{{ $.Values.global.imageRepository }}:{{ $cfg.tag }}"
