@@ -1,0 +1,9 @@
+apiVersion: v2
+name: ecommerce
+description: Production Helm Chart for Polyglot Microservices eCommerce Platform on AWS EKS with Dedicated Databases
+type: application
+version: 2.0.0
+appVersion: "2.0.0"
+maintainers:
+  - name: devops
+    email: admin@devopsshack.com

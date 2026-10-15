@@ -1,0 +1,219 @@
+# Production Helm values for Polyglot eCommerce Platform on AWS EKS
+global:
+  imageRegistry: 877013879278.dkr.ecr.us-east-1.amazonaws.com
+  imageRepository: ecommerce-platform
+  imagePullPolicy: IfNotPresent
+
+# Default configuration for dedicated databases (Database-per-Service architecture)
+databaseDefaults:
+  image:
+    repository: postgres
+    tag: "16-alpine"
+    pullPolicy: IfNotPresent
+  storageClassName: gp3
+  storageSize: 5Gi
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+
+# Pod Disruption Budget for high availability during node drain / updates
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+
+# 1. Auth Service (Java 21 / Spring Boot) + Dedicated auth-db
+auth:
+  enabled: true
+  tag: auth-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8081
+  resources:
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1024Mi
+  database:
+    enabled: true
+    host: auth-db
+    port: 5432
+    name: auth_db
+    user: auth_user
+    password: auth_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 2. Catalog Service (Go) + Dedicated catalog-db
+catalog:
+  enabled: true
+  tag: catalog-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8082
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: catalog-db
+    port: 5432
+    name: catalog_db
+    user: catalog_user
+    password: catalog_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 3. Inventory Service (Node.js) + Dedicated inventory-db
+inventory:
+  enabled: true
+  tag: inventory-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8083
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: inventory-db
+    port: 5432
+    name: inventory_db
+    user: inventory_user
+    password: inventory_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 4. Order Service (Python) + Dedicated order-db
+order:
+  enabled: true
+  tag: order-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8084
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: order-db
+    port: 5432
+    name: order_db
+    user: order_user
+    password: order_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 5. Payment Service (C# / .NET) + Dedicated payment-db
+payment:
+  enabled: true
+  tag: payment-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8085
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: payment-db
+    port: 5432
+    name: payment_db
+    user: payment_user
+    password: payment_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 6. Notification Service (Ruby / Sinatra) + Dedicated notification-db
+notification:
+  enabled: true
+  tag: notification-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8086
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: notification-db
+    port: 5432
+    name: notification_db
+    user: notification_user
+    password: notification_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 7. Analytics Service (PHP) + Dedicated analytics-db
+analytics:
+  enabled: true
+  tag: analytics-service-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    port: 8087
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  database:
+    enabled: true
+    host: analytics-db
+    port: 5432
+    name: analytics_db
+    user: analytics_user
+    password: analytics_db_password_123
+    storageSize: 5Gi
+    storageClassName: gp3
+
+# 8. Frontend Web UI (React + Nginx)
+frontend:
+  enabled: true
+  tag: frontend-8e423297b39193952a12155e0c669c4551241a1c
+  replicaCount: 2
+  service:
+    type: ClusterIP
+    port: 80
+  ingress:
+    enabled: true
+    className: alb
+    annotations:
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80},{"HTTPS":443}]'
+      alb.ingress.kubernetes.io/healthcheck-path: /
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:877013879278:certificate/21384cfe-329b-42af-9c59-b4e8320bee00
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
