@@ -197,7 +197,7 @@ analytics:
 cart:
   enabled: true
   tag: cart-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
-  replicaCount: 2
+  replicaCount: 1
   service:
     port: 8088
   resources:
@@ -221,7 +221,7 @@ cart:
 shipping:
   enabled: true
   tag: shipping-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
-  replicaCount: 2
+  replicaCount: 1
   service:
     port: 8089
   resources:
@@ -245,7 +245,7 @@ shipping:
 reviews:
   enabled: true
   tag: reviews-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
-  replicaCount: 2
+  replicaCount: 1
   service:
     port: 8090
   resources:
@@ -269,7 +269,7 @@ reviews:
 promotions:
   enabled: true
   tag: promotions-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
-  replicaCount: 2
+  replicaCount: 1
   service:
     port: 8091
   resources:
@@ -293,7 +293,7 @@ promotions:
 search:
   enabled: true
   tag: search-service-c1582489c50cf031f54dc9e8268b68aabe4a59e0
-  replicaCount: 2
+  replicaCount: 1
   service:
     port: 8092
   resources:
