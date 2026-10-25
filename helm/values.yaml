@@ -1,6 +1,6 @@
 # Production Helm values for Polyglot eCommerce Platform on AWS EKS
 global:
-  imageRegistry: 877013879278.dkr.ecr.us-east-1.amazonaws.com
+  imageRegistry: 623174465382.dkr.ecr.ap-southeast-2.amazonaws.com
   imageRepository: ecommerce-platform
   imagePullPolicy: IfNotPresent
 
@@ -28,7 +28,7 @@ podDisruptionBudget:
 # 1. Auth Service (Java 21 / Spring Boot) + Dedicated auth-db
 auth:
   enabled: true
-  tag: auth-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: auth-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8081
@@ -52,7 +52,7 @@ auth:
 # 2. Catalog Service (Go) + Dedicated catalog-db
 catalog:
   enabled: true
-  tag: catalog-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: catalog-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8082
@@ -76,7 +76,7 @@ catalog:
 # 3. Inventory Service (Node.js) + Dedicated inventory-db
 inventory:
   enabled: true
-  tag: inventory-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: inventory-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8083
@@ -100,7 +100,7 @@ inventory:
 # 4. Order Service (Python) + Dedicated order-db
 order:
   enabled: true
-  tag: order-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: order-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8084
@@ -124,7 +124,7 @@ order:
 # 5. Payment Service (C# / .NET) + Dedicated payment-db
 payment:
   enabled: true
-  tag: payment-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: payment-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8085
@@ -148,7 +148,7 @@ payment:
 # 6. Notification Service (Ruby / Sinatra) + Dedicated notification-db
 notification:
   enabled: true
-  tag: notification-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: notification-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8086
@@ -172,7 +172,7 @@ notification:
 # 7. Analytics Service (PHP) + Dedicated analytics-db
 analytics:
   enabled: true
-  tag: analytics-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: analytics-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     port: 8087
@@ -196,7 +196,7 @@ analytics:
 # 8. Cart Service (Python FastAPI) + Dedicated cart-db
 cart:
   enabled: true
-  tag: cart-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: cart-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 1
   service:
     port: 8088
@@ -220,7 +220,7 @@ cart:
 # 9. Shipping Service (Python FastAPI) + Dedicated shipping-db
 shipping:
   enabled: true
-  tag: shipping-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: shipping-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 1
   service:
     port: 8089
@@ -244,7 +244,7 @@ shipping:
 # 10. Product Reviews Service (Python FastAPI) + Dedicated reviews-db
 reviews:
   enabled: true
-  tag: reviews-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: reviews-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 1
   service:
     port: 8090
@@ -268,7 +268,7 @@ reviews:
 # 11. Promotions Service (Python FastAPI) + Dedicated promotions-db
 promotions:
   enabled: true
-  tag: promotions-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: promotions-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 1
   service:
     port: 8091
@@ -292,10 +292,8 @@ promotions:
 # 12. Product Search Service (Python FastAPI) + Dedicated search-db
 search:
   enabled: true
-  tag: search-service-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: search-service-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 1
-  nodeSelector:
-    topology.kubernetes.io/zone: us-east-1a
   service:
     port: 8092
   resources:
@@ -318,7 +316,7 @@ search:
 # 13. Frontend Web UI (React + Nginx)
 frontend:
   enabled: true
-  tag: frontend-e4293e8feeb60a28e328d27c6b64fc7d226514e1-39119971690-1
+  tag: frontend-9318ec028aa2cb2906580ee79d840b24d2508c60-local
   replicaCount: 2
   service:
     type: ClusterIP
